@@ -17,10 +17,32 @@ namespace ExcelConverter
         {
             InitializeComponent();
 
+            this.AllowDrop = true;
+            this.DragEnter += MainFormDragEnter;
+            this.DragDrop += MainFormDragDrop;
+
             rControl = excelFileTextBox;
             controlsStartLocationY = rControl.Location.Y;
 
             CreateControls();
+        }
+
+        private void MainFormDragEnter(object sender, DragEventArgs e) 
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effect = DragDropEffects.Copy;
+            else e.Effect = DragDropEffects.None;
+        }
+
+        private void MainFormDragDrop(object sender, DragEventArgs e) 
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+            RemoveAllControls();
+            for (int i = 0; i < 10 && i < files.Length; i++)
+            {
+                CreateControls();
+                controlsList[i][excelFileTextBox].Text = files[i];
+            }
         }
 
         private void findExcelFileButton_Click(object sender, EventArgs e)
@@ -41,6 +63,11 @@ namespace ExcelConverter
         }
 
         private void convertStartButton_Click(object sender, EventArgs e)
+        {
+            StartConvert();
+        }
+
+        private void StartConvert()
         {
             ExcelReader excelReader = new ExcelReader();
 
@@ -86,6 +113,14 @@ namespace ExcelConverter
             controlsList.RemoveAt(listIdx);
 
             UpdateControlsLocation();
+        }
+
+        private void RemoveAllControls()
+        {
+            foreach (var controls in controlsList)
+                foreach (Control control in controls.Values)
+                    Controls.Remove(control);
+            controlsList.Clear();
         }
 
         private Control CopyControl(Control sourceControl, Control destControl, int idx)
