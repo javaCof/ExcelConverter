@@ -17,6 +17,9 @@ namespace ExcelConverter
         {
             InitializeComponent();
 
+            Log("프로그램 시작");
+            LogConsole(String.Format("프로그램 시작\n"));
+
             this.AllowDrop = true;
             this.DragEnter += MainFormDragEnter;
             this.DragDrop += MainFormDragDrop;
@@ -69,19 +72,55 @@ namespace ExcelConverter
 
         private void StartConvert()
         {
+            Log("변환 중...");
             ExcelReader excelReader = new ExcelReader();
 
-            foreach (var controls in controlsList)
+            for (int i = 0; i < controlsList.Count; i++)
             {
-                var data = excelReader.ConvertToList(controls[excelFileTextBox].Text);
-                string fullClassName = controls[classNameTextBox].Text;
-                string namespaceName = fullClassName.Substring(0, fullClassName.LastIndexOf("."));
-                string className = fullClassName.Substring(fullClassName.LastIndexOf(".") + 1);
+                var controls = controlsList[i];
 
-                JsonConverter.ToJsonFile(".\\" + controls[jsonFileTextBox].Text, data);
+                if (controls[excelFileTextBox].Text == string.Empty)
+                {
+                    LogConsole(string.Format("{0} : 변환실패, 항목이 비어있음", i));
+                    continue;
+                }
+
+                string excelFileName = controls[excelFileTextBox].Text;
+                string simpleExcelFileName = excelFileName.Substring(excelFileName.LastIndexOf('\\') + 1);
+                simpleExcelFileName = simpleExcelFileName.Substring(0, simpleExcelFileName.LastIndexOf('.'));
+                var data = excelReader.ConvertToList(excelFileName);
+
+                string jsonFileName = controls[jsonFileTextBox].Text;
+                if (jsonFileName == string.Empty)
+                {
+                    jsonFileName = simpleExcelFileName + ".json";
+                }
+
+                string fullClassName = controls[classNameTextBox].Text;
+                if (fullClassName == string.Empty)
+                {
+                    fullClassName = simpleExcelFileName;
+                }
+
+                string namespaceName = null;
+                string className = fullClassName;
+                int dotIdx = fullClassName.LastIndexOf('.');
+                if (dotIdx != -1)
+                {
+                    namespaceName = fullClassName.Substring(0, dotIdx);
+                    className = fullClassName.Substring(dotIdx + 1);
+                }
+
+                JsonConverter.ToJsonFile(".\\" + jsonFileName, data);
+                LogConsole(string.Format("{0} : json 파일 생성\t: {1}", i, jsonFileName));
+
                 CodeConverter codeConverter = new CodeConverter(namespaceName, ".\\" + className + ".cs");
                 codeConverter.ToCsCodeFile(data);
+                LogConsole(string.Format("{0} : cs 코드 파일 생성\t: {1}", i, className + ".cs"));
             }
+
+            Log("변환완료");
+            LogConsole(String.Format("모든 작업 종료\n"));
         }
 
         private void CreateControls()
@@ -149,6 +188,16 @@ namespace ExcelConverter
             for (int i = 0; i < controlsList.Count; i++)
                 if ((int)controlsList[i][rControl].Tag == controlTag) return i;
             return -1;
+        }
+
+        private void Log(string text)
+        {
+            this.LogTextBox.Text = text;
+        }
+
+        private void LogConsole(string text)
+        {
+            Console.WriteLine(text);
         }
     }
 }

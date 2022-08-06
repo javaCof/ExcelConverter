@@ -35,13 +35,17 @@
             this.removeLineButton = new System.Windows.Forms.Button();
             this.addLineButton = new System.Windows.Forms.Button();
             this.convertStartButton = new System.Windows.Forms.Button();
+            this.LogTextBox = new System.Windows.Forms.TextBox();
+            this.ExcelFileLabel = new System.Windows.Forms.Label();
+            this.JsonFileLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // excelFileTextBox
             // 
             this.excelFileTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.excelFileTextBox.Font = new System.Drawing.Font("굴림", 11F);
-            this.excelFileTextBox.Location = new System.Drawing.Point(12, 12);
+            this.excelFileTextBox.Location = new System.Drawing.Point(12, 35);
             this.excelFileTextBox.Name = "excelFileTextBox";
             this.excelFileTextBox.ReadOnly = true;
             this.excelFileTextBox.Size = new System.Drawing.Size(270, 24);
@@ -51,7 +55,7 @@
             // 
             this.findExcelFileButton.BackColor = System.Drawing.SystemColors.Control;
             this.findExcelFileButton.Font = new System.Drawing.Font("굴림", 11F);
-            this.findExcelFileButton.Location = new System.Drawing.Point(288, 12);
+            this.findExcelFileButton.Location = new System.Drawing.Point(288, 35);
             this.findExcelFileButton.Name = "findExcelFileButton";
             this.findExcelFileButton.Size = new System.Drawing.Size(75, 23);
             this.findExcelFileButton.TabIndex = 0;
@@ -62,7 +66,7 @@
             // jsonFileTextBox
             // 
             this.jsonFileTextBox.Font = new System.Drawing.Font("굴림", 11F);
-            this.jsonFileTextBox.Location = new System.Drawing.Point(461, 12);
+            this.jsonFileTextBox.Location = new System.Drawing.Point(461, 35);
             this.jsonFileTextBox.Name = "jsonFileTextBox";
             this.jsonFileTextBox.Size = new System.Drawing.Size(120, 24);
             this.jsonFileTextBox.TabIndex = 2;
@@ -70,7 +74,7 @@
             // classNameTextBox
             // 
             this.classNameTextBox.Font = new System.Drawing.Font("굴림", 11F);
-            this.classNameTextBox.Location = new System.Drawing.Point(587, 12);
+            this.classNameTextBox.Location = new System.Drawing.Point(587, 35);
             this.classNameTextBox.Name = "classNameTextBox";
             this.classNameTextBox.Size = new System.Drawing.Size(120, 24);
             this.classNameTextBox.TabIndex = 2;
@@ -79,7 +83,7 @@
             // 
             this.removeLineButton.BackColor = System.Drawing.SystemColors.Control;
             this.removeLineButton.Font = new System.Drawing.Font("굴림", 11F);
-            this.removeLineButton.Location = new System.Drawing.Point(713, 12);
+            this.removeLineButton.Location = new System.Drawing.Point(713, 35);
             this.removeLineButton.Name = "removeLineButton";
             this.removeLineButton.Size = new System.Drawing.Size(75, 23);
             this.removeLineButton.TabIndex = 0;
@@ -111,12 +115,54 @@
             this.convertStartButton.UseVisualStyleBackColor = false;
             this.convertStartButton.Click += new System.EventHandler(this.convertStartButton_Click);
             // 
+            // LogTextBox
+            // 
+            this.LogTextBox.Font = new System.Drawing.Font("굴림", 18F);
+            this.LogTextBox.Location = new System.Drawing.Point(12, 388);
+            this.LogTextBox.Name = "LogTextBox";
+            this.LogTextBox.Size = new System.Drawing.Size(558, 35);
+            this.LogTextBox.TabIndex = 1;
+            // 
+            // ExcelFileLabel
+            // 
+            this.ExcelFileLabel.AutoSize = true;
+            this.ExcelFileLabel.Font = new System.Drawing.Font("굴림", 9F);
+            this.ExcelFileLabel.Location = new System.Drawing.Point(12, 9);
+            this.ExcelFileLabel.Name = "ExcelFileLabel";
+            this.ExcelFileLabel.Size = new System.Drawing.Size(61, 12);
+            this.ExcelFileLabel.TabIndex = 3;
+            this.ExcelFileLabel.Text = "Excel File";
+            // 
+            // JsonFileLabel
+            // 
+            this.JsonFileLabel.AutoSize = true;
+            this.JsonFileLabel.Font = new System.Drawing.Font("굴림", 9F);
+            this.JsonFileLabel.Location = new System.Drawing.Point(459, 9);
+            this.JsonFileLabel.Name = "JsonFileLabel";
+            this.JsonFileLabel.Size = new System.Drawing.Size(98, 12);
+            this.JsonFileLabel.TabIndex = 4;
+            this.JsonFileLabel.Text = "Json File (.json)";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("굴림", 9F);
+            this.label1.Location = new System.Drawing.Point(588, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(111, 12);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Namespace.Class";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.JsonFileLabel);
+            this.Controls.Add(this.ExcelFileLabel);
+            this.Controls.Add(this.LogTextBox);
             this.Controls.Add(this.addLineButton);
             this.Controls.Add(this.convertStartButton);
             this.Name = "MainForm";
@@ -135,5 +181,9 @@
         private System.Windows.Forms.Button removeLineButton;
         private System.Windows.Forms.Button addLineButton;
         private System.Windows.Forms.Button convertStartButton;
+        private System.Windows.Forms.TextBox LogTextBox;
+        private System.Windows.Forms.Label ExcelFileLabel;
+        private System.Windows.Forms.Label JsonFileLabel;
+        private System.Windows.Forms.Label label1;
     }
 }

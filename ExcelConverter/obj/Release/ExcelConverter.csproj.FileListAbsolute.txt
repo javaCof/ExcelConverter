@@ -1,0 +1,14 @@
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\bin\Release\ExcelConverter.exe.config
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\bin\Release\ExcelConverter.exe
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\bin\Release\ExcelConverter.pdb
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\bin\Release\Newtonsoft.Json.dll
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\bin\Release\Newtonsoft.Json.xml
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\obj\Release\ExcelConverter.csproj.AssemblyReference.cache
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\obj\Release\ExcelConverter.csproj.SuggestedBindingRedirects.cache
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\obj\Release\ExcelConverter.MainForm.resources
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\obj\Release\ExcelConverter.Properties.Resources.resources
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\obj\Release\ExcelConverter.csproj.GenerateResource.cache
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\obj\Release\ExcelConverter.csproj.CoreCompileInputs.cache
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\obj\Release\ExcelConverter.csproj.CopyComplete
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\obj\Release\ExcelConverter.exe
+C:\Users\black\Downloads\ExcelConverter\ExcelConverter\obj\Release\ExcelConverter.pdb

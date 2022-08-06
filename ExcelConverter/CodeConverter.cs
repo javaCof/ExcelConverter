@@ -25,10 +25,10 @@ namespace ExcelConverter
         {
             string className = path.Substring(path.LastIndexOf('\\') + 1);
             className = className.Substring(0, className.LastIndexOf('.'));
-
             filePath = path;
+
             codeCompileUnit = new CodeCompileUnit();
-            codeNamespace = new CodeNamespace(namespaceName);
+            codeNamespace = (namespaceName != null) ? new CodeNamespace(namespaceName) : new CodeNamespace();
             codeNamespace.Imports.Add(new CodeNamespaceImport("System"));
             codeClass = new CodeTypeDeclaration(className);
             codeClass.IsClass = true;
